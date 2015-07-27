@@ -16,8 +16,11 @@
   </nav>
 </head>
 <body>
-  
-  {{speeches}}
+  {% for speech in speeches %}
+  <p> {{speech.date}} </p>
+  <h2> {{speech.title}} </h2>
+  <p> {{speech.content}} </p>
+  {% endfor %}
 
 </body>
 </html>
