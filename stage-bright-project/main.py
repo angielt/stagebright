@@ -22,20 +22,17 @@ from google.appengine.api import users
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
-class User(ndb.Model):
-    name = ndb.StringProperty()
-
 class Speech(ndb.Model):
+    user_email = ndb.StringProperty()
     title = ndb.StringProperty()
     content = ndb.TextProperty()
-    user_key = ndb.KeyProperty()
     date = ndb.DateTimeProperty(required=True, auto_now=True)
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user is None: #the user is not logged in
-            login_url = users.create_login_url('/')
+            login_url = users.create_login_url('/account')
             self.response.write('<a href="%s">Log In</a>' % login_url)
         else: #the user is logged in
             logout_url = users.create_logout_url('/')
@@ -47,7 +44,7 @@ class MainHandler(webapp2.RequestHandler):
 
 class AccountHandler(webapp2.RequestHandler):
     def get(self):
-        speeches = Speech.query().fetch()
+        speeches = Speech.query(Speech.user_email == users.get_current_user().email()).fetch()
         speeches.sort(key=lambda x: x.date, reverse=True)
         template = env.get_template('account.html')
         variables = {'speeches': speeches}
