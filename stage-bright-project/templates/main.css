@@ -22,6 +22,7 @@ a {
   padding: 13px;
   display: inline-block;
   border-left: 1px solid #ccc;
+  text-decoration: none;
 }
 
 #last-option {
