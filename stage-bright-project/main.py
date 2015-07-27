@@ -50,11 +50,6 @@ class AccountHandler(webapp2.RequestHandler):
         variables = {'speeches': speeches}
         self.response.write(template.render(variables))
 
-class ResourcesHandler(webapp2.RequestHandler):
-    def get(self):
-        template = env.get_template('resources.html')
-        self.response.write(template.render())
-
 class PrepHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('prep.html')
@@ -73,7 +68,9 @@ class AboutHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/account', AccountHandler),
-    ('/resources', ResourcesHandler),
-    ('/prep', PrepHandler),
-    ('/about', AboutHandler)
+    # ('/prep', PrepHandler),
+    # ('/videos', VideoHandler),
+    # ('/articles', ArticleHandler),
+    # ('/tips', TipsHandler),
+    ('/about', AboutHandler),
 ], debug=True)
