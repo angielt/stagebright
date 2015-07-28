@@ -29,10 +29,11 @@ class Speech(ndb.Model):
     content = ndb.TextProperty()
     date = ndb.DateTimeProperty(required=True, auto_now=True)
 
-user = users.get_current_user()
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
         if user is None: #the user is not logged in
             login_url = users.create_login_url('/')
             self.response.write('<a href="%s">Log In</a>' % login_url)
@@ -46,14 +47,19 @@ class MainHandler(webapp2.RequestHandler):
 
 class AccountHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        login_url = users.create_login_url('/')
         if user is None:
-            self.redirect("/")
+            self.redirect("%s" % login_url)
         else:
-                speeches = Speech.query(Speech.user_email == users.get_current_user().email()).fetch()
-                speeches.sort(key=lambda x: x.date, reverse=True)
-                template = env.get_template('account.html')
-                variables = {'speeches': speeches}
-                self.response.write(template.render(variables))
+            logout_url = users.create_logout_url('/')
+            self.response.write('Hello, %s!' % user.email())
+            self.response.write('<a href="%s"> Log Out</a>' % logout_url)
+            speeches = Speech.query(Speech.user_email == users.get_current_user().email()).fetch()
+            speeches.sort(key=lambda x: x.date, reverse=True)
+            template = env.get_template('account.html')
+            variables = {'speeches': speeches}
+            self.response.write(template.render(variables))
     def post(self):
         content = self.request.get('content')
         title = self.request.get('title')
