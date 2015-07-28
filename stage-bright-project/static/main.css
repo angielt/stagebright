@@ -1,3 +1,5 @@
+
+
 body {
   font-family: "Railway",sans-serif
 }
@@ -23,6 +25,37 @@ nav {
   line-height: 1.41176471;
 }
 
+nav ul ul {
+  display: none;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li:hover > ul {
+  display: block;
+}
+
+nav ul ul {
+  background: #5f6975; border-radius: 0px; padding: 0;
+  /*position: absolute; top: 100%;*/
+}
+
+  nav ul ul li {
+    float: none;
+    /*position: relative;*/
+  }
+      nav ul ul li a {
+        display:inline-block;
+        padding: 15px 40px;
+        color: #000;
+      }
+
+        nav ul ul li a:hover {
+          background: #4b545f;
+        }
+
 a {
   padding: 13px;
   display: inline-block;
@@ -35,7 +68,7 @@ a:hover {
 
 }
 
-#last-option {
+.last-option {
   border-right: 1px solid #ccc;
 }
 li {
