@@ -29,8 +29,6 @@ class Speech(ndb.Model):
     content = ndb.TextProperty()
     date = ndb.DateTimeProperty(required=True, auto_now=True)
 
-
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -54,7 +52,7 @@ class AccountHandler(webapp2.RequestHandler):
         else:
             logout_url = users.create_logout_url('/')
             self.response.write('Hello, %s!' % user.email())
-            self.response.write('<a href="%s"> Log Out</a>' % logout_url)
+            self.response.write('<a href="%s"> Log Out </a>' % logout_url)
             speeches = Speech.query(Speech.user_email == users.get_current_user().email()).fetch()
             speeches.sort(key=lambda x: x.date, reverse=True)
             template = env.get_template('account.html')
@@ -70,6 +68,9 @@ class AccountHandler(webapp2.RequestHandler):
         speech.put()
         time.sleep(1)
         return self.redirect("/account")
+
+# class TeleprompterHandler(webapp2.RequestHandler):
+#     def get(self):
 
 class PrepHandler(webapp2.RequestHandler):
     def get(self):
@@ -96,6 +97,7 @@ app = webapp2.WSGIApplication([
     ('/account', AccountHandler),
     # ('/prep', PrepHandler),
     # ('/practice', PracticeHandler)
+    # ('/teleprompter', TeleprompterHandler),
     ('/videos', VideosHandler),
     # ('/articles', ArticlesHandler),
     # ('/tips', TipsHandler),
