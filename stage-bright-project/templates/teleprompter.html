@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Web Teleprompter</title>
+
+    <meta name="description" content="A web template that responds to the user's speech using the google web speech API.">
+    <meta name="keywords" content="template">
+    <meta name="author" content="Taylor Poulos">
+    <script type="text/javascript" src="//use.typekit.net/fih5vgo.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="static/reset.css">
+    <link href="static/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="logo-container" id="logo-container">
+      <div class="progress-bar"> </div>
+      <div class="logo">
+        Teleprompter
+      </div>
+    </div>
+
+    <div class="main-text" id="transcript">
+    </div>
+
+    <div class="edit-menu">
+      <div class="nav-menu">
+        <span class="category" id="settings-button">Settings</span>
+        <span class="category" id="text-button">New Text</span>
+        <div class="menu" id="settings-menu">
+          <h3> Settings </h3>
+          <div class="setting-holder">
+            <span class="setting-label">Font Size:</span>
+            <span class="setting" id="size-toggle">medium</span>
+          </div>
+          <div class="setting-holder">
+            <span class="setting-label">Fullscreen:</span>
+            <span class="setting" id="fullscreen-toggle">off</span>
+          </div>
+          <div class="setting-holder">
+            <span class="setting-label">Debug Mode:</span>
+            <span class="setting" id="debug-toggle">on</span>
+          </div>
+        </div>
+        <div class="menu" id="text-menu">
+          <h3>Enter your text</h3>
+          <p>Be sure that your text contains no special punctuation.</p>
+          <p>Speeches with lots of nonsense words, proper nouns, or repetitive phrases will likely not work.</p>
+          <textarea id="text-entry"></textarea>
+          <span class="setting submit" id="submit-text">Submit Text </span>
+        </div>
+      </div>
+    </div>
+
+
+	<script src="static/jquery-1.9.0.js"></script>
+  <script src="static/script.js"></script>
+	</body>
+</html>

@@ -69,8 +69,10 @@ class AccountHandler(webapp2.RequestHandler):
         time.sleep(1)
         return self.redirect("/account")
 
-# class TeleprompterHandler(webapp2.RequestHandler):
-#     def get(self):
+class TeleprompterHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('teleprompter.html')
+        self.response.write(template.render())
 
 class PrepHandler(webapp2.RequestHandler):
     def get(self):
@@ -92,13 +94,19 @@ class AboutHandler(webapp2.RequestHandler):
         template = env.get_template('about.html')
         self.response.write(template.render())
 
+class RecordHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('about.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/account', AccountHandler),
     # ('/prep', PrepHandler),
     # ('/practice', PracticeHandler)
-    # ('/teleprompter', TeleprompterHandler),
+    ('/teleprompter', TeleprompterHandler),
     ('/videos', VideosHandler),
+    # ('/record', RecordHandler),
     # ('/articles', ArticlesHandler),
     # ('/tips', TipsHandler),
     ('/about', AboutHandler),
