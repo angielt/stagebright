@@ -3,21 +3,29 @@
 <head>
   <title>Stage Bright</title>
   <link href="static/main.css" rel="stylesheet">
-
-<center>
-  <img src="static/images/cssilogo.png" rel="logo">
-</center>
-  <nav>
-      <ul id="main-nav">
-        <li><a href="/resources">Resources</a></li>
-        <li><a href="/practice">Practice</a></li>
-        <li><a href="/account">Account</a></li>
-        <li><a id="last-option" href="/about-us">About Us</a></li>
-      </ul>
-  </nav>
 </head>
 <body>
-  <form method="POST" action="">
+  <center>
+    <img src="static/images/cssilogo.png" rel="logo">
+    <nav>
+        <ul id="main-nav">
+            <li><a href="#">Resources</a>
+              <ul>
+                  <li><a href="/videos">Videos</a></li>
+                  <li><a href="/articles">Articles</a></li>
+                  <li><a href="/tips">Tips</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Practice</a>
+              <ul>
+              <li><a href="/teleprompter">Teleprompter</a></li>
+            </ul>
+          </li>
+            <li><a href="/account">Account</a><li>
+            <li><a class="last-option" href="/about">About Us</a></li>
+        </ul>
+    </nav>
+  <form class = "page-message" method="POST" action="">
     <p>Title <input type="text" name="title" /></p>
     <p>Content <textarea rows="4" cols="50" name="content"></textarea></p>
     <input type="submit" />
@@ -27,5 +35,6 @@
   <h2> {{speech.title}} </h2>
   <p> {{speech.content}} </p>
   {% endfor %}
+</center>
 </body>
 </html>
