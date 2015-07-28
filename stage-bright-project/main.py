@@ -106,7 +106,7 @@ app = webapp2.WSGIApplication([
     # ('/practice', PracticeHandler)
     ('/teleprompter', TeleprompterHandler),
     ('/videos', VideosHandler),
-    # ('/record', RecordHandler),
+    ('/record', RecordHandler),
     # ('/articles', ArticlesHandler),
     # ('/tips', TipsHandler),
     ('/about', AboutHandler),
