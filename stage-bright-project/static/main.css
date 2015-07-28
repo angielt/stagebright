@@ -1,10 +1,11 @@
 
 
 body {
-  font-family: "Railway",sans-serif
+  font-family: "Raleway",sans-serif;
 }
 
 nav {
+  margin-top: 5px;
   width: 1200px;
   display: block;
   height: 2.875rem;
@@ -15,7 +16,8 @@ nav {
   border-radius: 6px;
   background-clip: padding-box;
   background-color: #FFFFFF;
-  background-image: -webkit-linear-gradient(top,#FFFFFF,#FFFFFF,#f8f8f8,#eeeeee);
+  /*background-image: -webkit-linear-gradient(top,#FFFFFF,#FFFFFF,#f8f8f8,#eeeeee);*/
+  background-image: -webkit-linear-gradient(top,#3fe694,#3fe694,#3fe694,#3fe694);
   outline: 0;
   padding: 0;
   margin: 0;
@@ -59,11 +61,12 @@ a {
   display: inline-block;
   border-left: 1px solid #ccc;
   text-decoration: none;
+  color: black;
 }
 
 a:hover {
-  background-image: -webkit-linear-gradient(top,#e6e6e6,#f5f5f5);
-
+  /*background-image: -webkit-linear-gradient(top,#e6e6e6,#f5f5f5);*/
+  background-image: -webkit-linear-gradient(top,#17c471,#17c471);
 }
 
 .last-option {
