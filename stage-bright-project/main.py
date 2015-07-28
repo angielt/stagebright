@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import time
 import webapp2
 import jinja2
 import datetime
@@ -33,7 +34,7 @@ user = users.get_current_user()
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         if user is None: #the user is not logged in
-            login_url = users.create_login_url('/account')
+            login_url = users.create_login_url('/')
             self.response.write('<a href="%s">Log In</a>' % login_url)
         else: #the user is logged in
             logout_url = users.create_logout_url('/')
@@ -61,6 +62,7 @@ class AccountHandler(webapp2.RequestHandler):
                         content=content,
                         date=datetime.datetime.now())
         speech.put()
+        time.sleep(1)
         return self.redirect("/account")
 
 class PrepHandler(webapp2.RequestHandler):
@@ -88,7 +90,7 @@ app = webapp2.WSGIApplication([
     ('/account', AccountHandler),
     # ('/prep', PrepHandler),
     # ('/practice', PracticeHandler)
-    # ('/videos', VideosHandler),
+    ('/videos', VideosHandler),
     # ('/articles', ArticlesHandler),
     # ('/tips', TipsHandler),
     ('/about', AboutHandler),
