@@ -40,9 +40,9 @@
     <input type="submit" />
   </form>
   {% for speech in speeches %}
-  <p> {{speech.date}} </p>
   <h2> {{speech.title}} </h2>
   <p> {{speech.content}} </p>
+  <p><a href="/post?key={{speech.key.urlsafe()}}">{{speech.date}}</a></p>
   {% endfor %}
 </center>
 </body>

@@ -69,6 +69,15 @@ class AccountHandler(webapp2.RequestHandler):
         time.sleep(1)
         return self.redirect("/account")
 
+class PostHandler(webapp2.RequestHandler):
+    def get(self):
+        urlsafe_post_key = self.request.get('key')
+        post_key = ndb.Key(urlsafe=urlsafe_post_key)
+        post = post_key.get()
+        variable= {'post': post}
+        template = env.get_template('post.html')
+        self.response.write(template.render(variable))
+
 class TeleprompterHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('teleprompter.html')
@@ -89,6 +98,11 @@ class VideosHandler(webapp2.RequestHandler):
         template = env.get_template('videos.html')
         self.response.write(template.render())
 
+class ArticlesHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('articles.html')
+        self.response.write(template.render())
+
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('about.html')
@@ -102,12 +116,13 @@ class RecordHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/account', AccountHandler),
+    ('/post', PostHandler),
     # ('/prep', PrepHandler),
     # ('/practice', PracticeHandler)
     ('/teleprompter', TeleprompterHandler),
     ('/videos', VideosHandler),
     ('/record', RecordHandler),
-    # ('/articles', ArticlesHandler),
+    ('/articles', ArticlesHandler),
     # ('/tips', TipsHandler),
     ('/about', AboutHandler),
 ], debug=True)
