@@ -1,14 +1,4 @@
 
-
-body {
-  font-family: "Raleway",sans-serif;
-  background: #FFF998;
-}
-
-#page-message {
-  margin:  85px 0px;
-}
-
 nav {
   width: 1200px;
   display: block;
@@ -88,4 +78,34 @@ ul {
   list-style-type: none;
   margin: auto;
   padding: 0;
+}
+
+/*----*/
+
+body {
+  font-family: "Raleway",sans-serif;
+  background: #FFF998;
+}
+
+h1 {
+  margin-top:53px;
+}
+
+.page-message {
+  margin:  85px 0px;
+}
+
+.bio-images {
+  width: 200px;
+  height: auto;
+  display: inline;
+  margin: 53px 0;
+  margin-left: 227px;
+}
+
+h2 {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 53px;
+  margin-left: 10px;
 }
