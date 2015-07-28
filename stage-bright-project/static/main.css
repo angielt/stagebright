@@ -6,7 +6,6 @@ body {
 }
 
 nav {
-  margin-top: 5px;
   width: 1200px;
   display: block;
   height: 2.875rem;
@@ -26,6 +25,8 @@ nav {
   vertical-align: baseline;
   /* background: transparent; */
   line-height: 1.41176471;
+  margin-top: 5px;
+
 }
 
 
