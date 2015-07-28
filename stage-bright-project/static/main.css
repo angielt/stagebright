@@ -20,6 +20,7 @@ nav {
   /* background: transparent; */
   line-height: 1.41176471;
   margin-top: 5px;
+  position: relative;
 
 }
 
@@ -52,7 +53,7 @@ nav ul ul {
           background: #4b545f;
         }
 
-a {
+nav a {
   width: 107px;
   padding: 13px;
   display: inline-block;
@@ -61,7 +62,7 @@ a {
   color: black;
 }
 
-a:hover {
+nav a:hover {
   /*background-image: -webkit-linear-gradient(top,#e6e6e6,#f5f5f5);*/
   background-image: -webkit-linear-gradient(top,#17c471,#17c471);
 }
