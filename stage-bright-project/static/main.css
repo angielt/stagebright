@@ -25,9 +25,6 @@ nav {
   line-height: 1.41176471;
 }
 
-nav ul ul {
-  display: none;
-}
 
 nav ul li {
   float: left;
@@ -39,6 +36,7 @@ nav ul li:hover > ul {
 
 nav ul ul {
   background: #5f6975; border-radius: 0px; padding: 0;
+  display: none;
   /*position: absolute; top: 100%;*/
 }
 
@@ -47,9 +45,9 @@ nav ul ul {
     /*position: relative;*/
   }
       nav ul ul li a {
-        display:inline-block;
-        padding: 15px 40px;
+        display:block;
         color: #000;
+        border-left: none;
       }
 
         nav ul ul li a:hover {
