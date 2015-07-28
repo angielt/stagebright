@@ -28,9 +28,10 @@ class Speech(ndb.Model):
     content = ndb.TextProperty()
     date = ndb.DateTimeProperty(required=True, auto_now=True)
 
+user = users.get_current_user()
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
         if user is None: #the user is not logged in
             login_url = users.create_login_url('/account')
             self.response.write('<a href="%s">Log In</a>' % login_url)
@@ -44,11 +45,23 @@ class MainHandler(webapp2.RequestHandler):
 
 class AccountHandler(webapp2.RequestHandler):
     def get(self):
-        speeches = Speech.query(Speech.user_email == users.get_current_user().email()).fetch()
-        speeches.sort(key=lambda x: x.date, reverse=True)
-        template = env.get_template('account.html')
-        variables = {'speeches': speeches}
-        self.response.write(template.render(variables))
+        if user is None:
+            self.redirect("/")
+        else:
+                speeches = Speech.query(Speech.user_email == users.get_current_user().email()).fetch()
+                speeches.sort(key=lambda x: x.date, reverse=True)
+                template = env.get_template('account.html')
+                variables = {'speeches': speeches}
+                self.response.write(template.render(variables))
+    def post(self):
+        content = self.request.get('content')
+        title = self.request.get('title')
+        speech = Speech(user_email=users.get_current_user().email(),
+                        title=title,
+                        content=content,
+                        date=datetime.datetime.now())
+        speech.put()
+        return self.redirect("/account")
 
 class PrepHandler(webapp2.RequestHandler):
     def get(self):
@@ -60,6 +73,11 @@ class PracticeHandler(webapp2.RequestHandler):
         template = env.get_template('practice.html')
         self.response.write(template.render())
 
+class VideosHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('videos.html')
+        self.response.write(template.render())
+
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('about.html')
@@ -69,8 +87,9 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/account', AccountHandler),
     # ('/prep', PrepHandler),
-    # ('/videos', VideoHandler),
-    # ('/articles', ArticleHandler),
+    # ('/practice', PracticeHandler)
+    # ('/videos', VideosHandler),
+    # ('/articles', ArticlesHandler),
     # ('/tips', TipsHandler),
     ('/about', AboutHandler),
 ], debug=True)
