@@ -96,7 +96,7 @@ class AboutHandler(webapp2.RequestHandler):
 
 class RecordHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('about.html')
+        template = env.get_template('record.html')
         self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
