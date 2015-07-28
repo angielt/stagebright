@@ -5,7 +5,13 @@
     <title></title>
   </head>
   <body>
-    <h3>{{post.title}}</h3>
-    <p> {{post.content}}</p>
+    <h1>Here you can edit your selected post!</h1>
+    <form class = "page-message" method="POST" action="">
+      <input type="hidden" name="key" value="{{post.key.urlsafe()}}">
+      <p>Title <input type="text" name="title" value="{{post.title}}"/></p>
+      <!--look up form commands so that content = something  -->
+      <p>Content <textarea rows="4" cols="50" name="content">{{post.content}}</textarea></p>
+      <input type="submit" />
+    </form>
   </body>
 </html>

@@ -77,6 +77,18 @@ class PostHandler(webapp2.RequestHandler):
         variable= {'post': post}
         template = env.get_template('post.html')
         self.response.write(template.render(variable))
+    def post(self):
+        content = self.request.get('content') #user provides content
+        title = self.request.get('title') #user provides title
+        urlsafe_post_key = self.request.get('key') #user provides key, unknowingly, by clicking a link
+        post_key = ndb.Key(urlsafe=urlsafe_post_key)
+        post = post_key.get()
+        post.content = content
+        post.title = title
+        post.put()
+        time.sleep(1)
+        return self.redirect("/account")
+
 
 class TeleprompterHandler(webapp2.RequestHandler):
     def get(self):
