@@ -5,6 +5,10 @@ body {
   background: #FFF998;
 }
 
+#page-message {
+  margin:  85px 0px;
+}
+
 nav {
   width: 1200px;
   display: block;
