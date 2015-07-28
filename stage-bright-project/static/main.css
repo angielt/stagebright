@@ -1,4 +1,9 @@
+body {
+  font-family: "Railway",sans-serif
+}
+
 nav {
+  width: 1200px;
   display: block;
   height: 2.875rem;
   text-align: center;
