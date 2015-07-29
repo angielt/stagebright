@@ -389,7 +389,9 @@ $(document).ready(function() {
   //
   $("#text-button").click(function() {
     if(selectedMenu === "#text-menu") {
-      console.log("nothing")
+      console.log("nothing");
+      $(selectedMenu).slideUp(slideSpeed);
+      selectedMenu = "";
     }
     else {
       console.log('else');
