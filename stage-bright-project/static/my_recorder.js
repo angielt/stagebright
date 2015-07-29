@@ -40,14 +40,29 @@ function __log(e, data) {
      var li = document.createElement('li');
      var au = document.createElement('audio');
      var hf = document.createElement('a');
+     var breakline = document.createElement("br")
+
+     try {
+     last_link = document.querySelector("#recordingslist").lastChild.getElementsByTagName("a")[0].getAttribute("download").split(".")[0];
+     last_number = parseInt(last_link.slice(-1));
+     this_number = last_number + 1;
+     }
+     catch(err) {
+      this_number = 0;
+     }
 
      au.controls = true;
      au.src = url;
      hf.href = url;
-     hf.download = new Date().toISOString() + '.wav';
+    //  hf.download = new Date().toISOString() + 'SpeechBright'+ '.wav';
+     hf.download = 'SpeechBright-'+ this_number+'.wav';
+
+
+    //  hf.download = new Date().toISOString() + '.wav';
      hf.innerHTML = hf.download;
      li.appendChild(au);
      li.appendChild(hf);
+    //  li.appendChild(breakline);
      document.querySelector("#recordingslist").appendChild(li);
    });
  }

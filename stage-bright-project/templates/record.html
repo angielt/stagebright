@@ -12,7 +12,10 @@
 	<title>Live input record and playback</title>
   <style type='text/css'>
     ul { list-style: none; }
-    #recordingslist audio { display: block; margin-bottom: 10px; }
+    #recordingslist audio {
+      display: block;
+      margin: 50px 100px;
+}
   </style>
 
   <!--  -->
@@ -45,8 +48,9 @@
       </ul>
   </nav>
 
+
+  <ul id="recordingslist"></ul>
+  <br>
   <button onclick="startRecording(this);">Record</button>
   <button onclick="stopRecording(this)";disabled>Stop Recording</button>
-  <ul id="recordingslist"></ul>
-
  <!--  -->

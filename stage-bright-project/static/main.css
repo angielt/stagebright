@@ -110,3 +110,12 @@ h2 {
   margin-top: 53px;
   margin-left: 10px;
 }
+
+button {
+  margin: 10px;
+  margin-top: 20px;
+}
+
+#recordingslist a {
+  text-decoration: none;
+}
