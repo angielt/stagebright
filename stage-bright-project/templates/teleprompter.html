@@ -12,25 +12,54 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="static/reset.css">
     <link href="static/style.css" rel="stylesheet" type="text/css">
+    <link href = "static/main.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
+    <center>
+      <a href="/">
+        <img class="logo" src="static/images/logo.png" rel="logo">
+      </a>
+
+      <!--  -->
+
+      <nav>
+          <ul id="main-nav">
+              <li><a href="#">Resources</a>
+                <ul>
+                    <li><a href="/videos">Videos</a></li>
+                    <li><a href="/articles">Articles</a></li>
+                    <li><a href="/tips">Tips</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Practice</a>
+                <ul>
+                <li><a href="/teleprompter">Teleprompter</a></li>
+                <li><a href="/record">Record</a></li>
+              </ul>
+            </li>
+              <li><a href="/account">Account</a><li>
+              <li><a class="last-option" href="/about">About Us</a></li>
+          </ul>
+      </nav>
+    </center>
+
     <div class="logo-container" id="logo-container">
       <div class="progress-bar"> </div>
-      <div class="logo">
+      <div class="telelogo">
         Teleprompter
       </div>
     </div>
-
-    <div class="main-text" id="transcript">
-    {{post_content}}
-    </div>
-    <!-- <div id="text" style="display: none;">
-
-    </div> -->
+    <center>
     <div class="edit-menu">
       <div class="nav-menu">
+        <section class = "button-section">
+        <span class="category" id="text-button">Ready to Start?</span>
+</section>
+<section class = "button-section">
         <span class="category" id="settings-button">Settings</span>
-        <span class="category" id="text-button">New Text</span>
+      </section>
         <div class="menu" id="settings-menu">
           <h3> Settings </h3>
           <div class="setting-holder">
@@ -47,15 +76,22 @@
           </div>
         </div>
         <div class="menu" id="text-menu">
-          <h3>Enter your text</h3>
-          <p>Be sure that your text contains no special punctuation.</p>
-          <p>Speeches with lots of nonsense words, proper nouns, or repetitive phrases will likely not work.</p>
-          <textarea id="text-entry"></textarea>
-          <span class="setting submit" id="submit-text">Submit Text </span>
+          <center>
+          <h3>Proofread, proofread proofread!</h3>
+          <p>Once you hit submit, just start talking. The teleprompter will scroll for you.</p>
+        </center>
+          <textarea id="text-entry">{{post_content}}</textarea>
+          <span class="setting submit" id="submit-text">Confirm Speech</span>
         </div>
-        <div><h3><a href="/">Back to Homepage</a></h3></div>
       </div>
     </div>
+  </center>
+    <div class="main-text" id="transcript">
+    </div>
+    <!-- <div id="text" style="display: none;">
+
+    </div> -->
+
 
 
 	<script src="static/jquery-1.9.0.js"></script>
