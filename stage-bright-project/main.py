@@ -105,7 +105,7 @@ class PostHandler(webapp2.RequestHandler):
 
 class TeleprompterHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('teleprompter2.html')
+        template = env.get_template('teleprompter.html')
         self.response.write(template.render())
 
 class LoggedInTeleprompterHandler(webapp2.RequestHandler):
@@ -113,7 +113,7 @@ class LoggedInTeleprompterHandler(webapp2.RequestHandler):
         urlsafe_post_key = self.request.get('key')
         post_key = ndb.Key(urlsafe=urlsafe_post_key)
         post = post_key.get()
-        variable={'post': post}
+        variable={'post_content': post.content}
         template = env.get_template('teleprompter.html')
         self.response.write(template.render(variable))
 
