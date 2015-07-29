@@ -125,3 +125,9 @@ button {
   height:177px;
   padding-bottom: 30px;
 }
+
+div {
+  float: left;
+  width: 600px;
+
+}
