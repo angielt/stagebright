@@ -48,7 +48,7 @@ function __log(e, data) {
      this_number = last_number + 1;
      }
      catch(err) {
-      this_number = 0;
+      this_number = 1;
      }
 
      au.controls = true;

@@ -119,3 +119,8 @@ button {
 #recordingslist a {
   text-decoration: none;
 }
+
+.logo {
+  height:177px;
+  padding-bottom: 30px;
+}
