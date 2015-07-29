@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Stage Bright</title>
+  <link href = "static/main.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<center>
+  <a href = "/">
+    <img class="logo" src="static/images/logo.png" rel="logo">
+  </a>
+  <!--  -->
+
+  <nav>
+      <ul id="main-nav">
+          <li><a href="#">Resources</a>
+            <ul>
+                <li><a href="/videos">Videos</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/tips">Tips</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Practice</a>
+            <ul>
+            <li><a href="/teleprompter">Teleprompter</a></li>
+            <li><a href="/record">Record</a></li>
+          </ul>
+        </li>
+        <li><a href="/account">My Speeches</a><li>
+          <li><a class="last-option" href="/about">About Us</a></li>
+      </ul>
+  </nav>
+
     <h1>Here you can edit your selected post!</h1>
     <form class = "page-message" method="POST" action="">
       <input type="hidden" name="key" value="{{post.key.urlsafe()}}">
@@ -13,5 +43,6 @@
       <p>Content <textarea rows="4" cols="50" name="content">{{post.content}}</textarea></p>
       <input type="submit" />
     </form>
+  </center>
   </body>
 </html>
