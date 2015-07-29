@@ -32,19 +32,22 @@
         </ul>
     </nav>
     <!--  -->
+
+    {% for speech in speeches %}
+    <h2> {{speech.title}} </h2>
+    <p> {{speech.content}} </p>
+    <p>{{speech.date}}</p>
+    <p><a href="/post?key={{speech.key.urlsafe()}}">Edit this post!</a></p>
+    <p><a href="/loggedinteleprompter?key={{speech.key.urlsafe()}}">Use the teleprompter for this post!</a></p>
+    {% endfor %}
+
   <h2>Create a New Speech</h2>
   <form class = "page-message" method="POST" action="">
     <p>Title <input type="text" name="title" /></p>
     <p>Content <textarea rows="4" cols="50" name="content"></textarea></p>
     <input type="submit" />
   </form>
-  {% for speech in speeches %}
-  <h2> {{speech.title}} </h2>
-  <p> {{speech.content}} </p>
-  <p>{{speech.date}}</p>
-  <p><a href="/post?key={{speech.key.urlsafe()}}">Edit this post!</a></p>
-  <p><a href="/loggedinteleprompter?key={{speech.key.urlsafe()}}">Use the teleprompter for this post!</a></p>
-  {% endfor %}
+
 </center>
 </body>
 </html>
