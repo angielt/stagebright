@@ -372,17 +372,33 @@ $(document).ready(function() {
     }
   });
 
+  // $("#text-button").click(function() {
+  //   if(selectedMenu === "#text-menu") {
+  //     console.log('if');
+  //     $(selectedMenu).slideUp(slideSpeed);
+  //     selectedMenu = "";
+  //   }
+  //   else {
+  //     console.log('else');
+  //     $(selectedMenu).slideUp(slideSpeed);
+  //     selectedMenu = "#text-menu";
+  //     $(selectedMenu).slideDown(slideSpeed);
+  //   }
+  // });
+
+  //
   $("#text-button").click(function() {
     if(selectedMenu === "#text-menu") {
-      $(selectedMenu).slideUp(slideSpeed);
-      selectedMenu = "";
+      console.log("nothing")
     }
     else {
+      console.log('else');
       $(selectedMenu).slideUp(slideSpeed);
       selectedMenu = "#text-menu";
       $(selectedMenu).slideDown(slideSpeed);
     }
   });
+  //
 
   $("#instructions-button").click(function() {
     if(selectedMenu === "#instructions-menu") {
@@ -440,6 +456,8 @@ $(document).ready(function() {
     sp.prompter.newText($("#text-entry").val());
     sp.position = 0;
     $("#text-entry").val("");
+    $(selectedMenu).slideUp(slideSpeed);
+    selectedMenu = "";
   });
 
 

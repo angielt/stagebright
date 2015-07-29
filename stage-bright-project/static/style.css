@@ -1,9 +1,9 @@
 
-body {
+/*body {
   font-family: "pragmatica-web", arial, serif;
   font-size: 62.5%;
   -webkit-font-smoothing: antialiased
-}
+}*/
 
 .logo-container {
   position: fixed;
@@ -15,7 +15,7 @@ body {
   color:white;
 }
 
-.logo {
+.telelogo {
   position: absolute;
   right: 0;
   top: -1rem;
@@ -64,7 +64,7 @@ body {
 }
 
 .edit-menu {
-  position: fixed;
+  position: relative;
   height: 100%;
   width: 23%;
   right:0;
@@ -75,6 +75,9 @@ body {
 .nav-menu {
   margin: 1rem 0rem;
   text-align: center;
+  padding-top: 100px;
+  color: black;
+  font-family: "Raleway", sans-serif;
 }
 
 .edit-menu .category {
@@ -164,4 +167,15 @@ body {
 .menu textarea:focus {
 
   outline: 1px solid #006EF5;
+}
+
+.button-section {
+  background: #3fe694;
+  border-radius: 25px;
+  padding: 20px;
+  margin: 25px;
+}
+
+.button-section:hover {
+  background: #17c471;
 }
