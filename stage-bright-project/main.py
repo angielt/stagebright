@@ -23,6 +23,17 @@ from google.appengine.api import users
 
 env = jinja2.Environment(loader=jinja2.FileSystemLoader('templates'))
 
+def login(handler):
+        user = users.get_current_user()
+        if user is None: #the user is not logged in
+            login_url = users.create_login_url('/')
+            handler.response.write('<a href="%s">Log In</a>' % login_url)
+            # self.response.write()
+        else: #the user is logged in
+            logout_url = users.create_logout_url('/')
+            handler.response.write('Hello, %s!' % user.email())
+            handler.response.write('<a href="%s"> Log Out</a>' % logout_url)
+
 class Speech(ndb.Model):
     user_email = ndb.StringProperty()
     title = ndb.StringProperty()
@@ -31,17 +42,18 @@ class Speech(ndb.Model):
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        user = users.get_current_user()
-        if user is None: #the user is not logged in
-            login_url = users.create_login_url('/')
-            self.response.write('<a href="%s">Log In</a>' % login_url)
-        else: #the user is logged in
-            logout_url = users.create_logout_url('/')
-            self.response.write('Hello, %s!' % user.email())
-            self.response.write('<a href="%s"> Log Out</a>' % logout_url)
+        login(self)
+        # user = users.get_current_user()
+        # if user is None: #the user is not logged in
+        #     login_url = users.create_login_url('/')
+        #     self.response.write('<a href="%s">Log In</a>' % login_url)
+        # else: #the user is logged in
+        #     logout_url = users.create_logout_url('/')
+        #     self.response.write('Hello, %s!' % user.email())
+        #     self.response.write('<a href="%s"> Log Out</a>' % logout_url)
         template = env.get_template('main.html')
-        variables = {'user': user}
-        self.response.write(template.render(variables))
+        # variables = {'user': user}
+        self.response.write(template.render())
 
 class AccountHandler(webapp2.RequestHandler):
     def get(self):
@@ -71,6 +83,7 @@ class AccountHandler(webapp2.RequestHandler):
 
 class PostHandler(webapp2.RequestHandler):
     def get(self):
+        login(self)
         urlsafe_post_key = self.request.get('key')
         post_key = ndb.Key(urlsafe=urlsafe_post_key)
         post = post_key.get()
@@ -92,8 +105,17 @@ class PostHandler(webapp2.RequestHandler):
 
 class TeleprompterHandler(webapp2.RequestHandler):
     def get(self):
-        template = env.get_template('teleprompter.html')
+        template = env.get_template('teleprompter2.html')
         self.response.write(template.render())
+
+class LoggedInTeleprompterHandler(webapp2.RequestHandler):
+    def get(self):
+        urlsafe_post_key = self.request.get('key')
+        post_key = ndb.Key(urlsafe=urlsafe_post_key)
+        post = post_key.get()
+        variable={'post': post}
+        template = env.get_template('teleprompter.html')
+        self.response.write(template.render(variable))
 
 class PrepHandler(webapp2.RequestHandler):
     def get(self):
@@ -107,26 +129,31 @@ class PracticeHandler(webapp2.RequestHandler):
 
 class VideosHandler(webapp2.RequestHandler):
     def get(self):
+        login(self)
         template = env.get_template('videos.html')
         self.response.write(template.render())
 
 class ArticlesHandler(webapp2.RequestHandler):
     def get(self):
+        login(self)
         template = env.get_template('articles.html')
         self.response.write(template.render())
 
 class TipsHandler(webapp2.RequestHandler):
     def get(self):
+        login(self)
         template = env.get_template('tips.html')
         self.response.write(template.render())
 
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
+        login(self)
         template = env.get_template('about.html')
         self.response.write(template.render())
 
 class RecordHandler(webapp2.RequestHandler):
     def get(self):
+        login(self)
         template = env.get_template('record.html')
         self.response.write(template.render())
 
@@ -137,6 +164,7 @@ app = webapp2.WSGIApplication([
     # ('/prep', PrepHandler),
     # ('/practice', PracticeHandler)
     ('/teleprompter', TeleprompterHandler),
+    ('/loggedinteleprompter', LoggedInTeleprompterHandler),
     ('/videos', VideosHandler),
     ('/record', RecordHandler),
     ('/articles', ArticlesHandler),
