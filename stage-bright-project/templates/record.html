@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Stage Bright</title>
+  <!-- <title>Stage Bright</title> -->
   <link href = "static/main.css" rel="stylesheet">
   <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+  <script type="text/javascript" src="static/my_recorder.js"></script>
+  <script type="text/javascript" src="static/recorderWorker.js"></script>
+  <script type="text/javascript" src="static/recorder.js"></script>
+  <!--  -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Live input record and playback</title>
+  <style type='text/css'>
+    ul { list-style: none; }
+    #recordingslist audio { display: block; margin-bottom: 10px; }
+  </style>
+
+  <!--  -->
+
 </head>
 <body>
 <center>
@@ -31,5 +44,9 @@
           <li><a class="last-option" href="/about">About Us</a></li>
       </ul>
   </nav>
+
+  <button onclick="startRecording(this);">Record</button>
+  <button onclick="stopRecording(this)";disabled>Stop Recording</button>
+  <ul id="recordingslist"></ul>
 
  <!--  -->
