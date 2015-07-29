@@ -115,6 +115,11 @@ class ArticlesHandler(webapp2.RequestHandler):
         template = env.get_template('articles.html')
         self.response.write(template.render())
 
+class TipsHandler(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template('tips.html')
+        self.response.write(template.render())
+
 class AboutHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('about.html')
@@ -135,6 +140,6 @@ app = webapp2.WSGIApplication([
     ('/videos', VideosHandler),
     ('/record', RecordHandler),
     ('/articles', ArticlesHandler),
-    # ('/tips', TipsHandler),
+    ('/tips', TipsHandler),
     ('/about', AboutHandler),
 ], debug=True)
