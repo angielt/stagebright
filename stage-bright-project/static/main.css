@@ -183,3 +183,14 @@ button {
   -webkit-transform: scaleX(-1);
   border-radius: 23px;
 }
+
+#team-pic {
+  height: 300px;
+  margin: 10px;
+  margin-bottom: 40px;
+}
+
+.header {
+  margin-bottom: 0;
+  text-align: center;
+}
