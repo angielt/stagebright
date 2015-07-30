@@ -152,3 +152,18 @@ button {
   margin: 0 300px 100px 300px;
   border-radius: 25;
 }
+
+.bottom-image-right {
+  height: 219px;
+  position: fixed;
+  bottom: -34px;
+  left: 90%;
+}
+
+.bottom-image-left {
+  height: 219px;
+  position: fixed;
+  bottom: -34px;
+  right: 90%;
+  -webkit-transform: scaleX(-1);
+}
