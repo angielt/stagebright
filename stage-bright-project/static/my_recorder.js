@@ -1,11 +1,17 @@
 
 console.log("hey from my_recorder");
+
+
+
+
 function __log(e, data) {
    console.log(e, data);
   //  log.innerHTML += "\n" + e + " " + (data || '');
  }
  var audio_context;
  var recorder;
+ var timer;
+ var ok_to_start = false;
  function startUserMedia(stream) {
    console.log("startUserMedia")
    var input = audio_context.createMediaStreamSource(stream);
@@ -16,14 +22,43 @@ function __log(e, data) {
 
    recorder = new Recorder(input);
    __log('Recorder initialised.');
+   ok_to_start = true;
  }
  function startRecording(button) {
+  //  document.getElementById("seconds").innerHTML = "00";
+  //  document.getElementById("minutes").innerHTML = "00";
+  if (ok_to_start === false) {
+    alert("Not Recording! Please allow microphone access.");
+  }
+  else {
+   var sec = 0;
+   document.getElementById("status").innerHTML = "Recording... ";
+   document.getElementById("seconds").innerHTML = "00";
+   document.getElementById("colon").innerHTML = ":";
+   document.getElementById("minutes").innerHTML = "00";
+    function pad(val) {
+        return val > 9 ? val : "0" + val;
+    }
+    timer = setInterval(function () {
+        document.getElementById("seconds").innerHTML = pad(++sec % 60);
+        document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
+    }, 1000);
+
+
+
    recorder && recorder.record();
    button.disabled = true;
    button.nextElementSibling.disabled = false;
    __log('Recording...');
  }
+ }
  function stopRecording(button) {
+   document.getElementById("status").innerHTML = "";
+   clearInterval(timer);
+   document.getElementById("seconds").innerHTML = "";
+   document.getElementById("colon").innerHTML = "";
+   document.getElementById("minutes").innerHTML = "";
+
    recorder && recorder.stop();
    button.disabled = true;
    button.previousElementSibling.disabled = false;
@@ -85,3 +120,9 @@ function __log(e, data) {
      __log('No live audio input: ' + e);
    });
  };
+
+
+ //
+ // setTimeout(function () {
+ //     clearInterval(timer);
+ // }, 110000);
