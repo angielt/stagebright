@@ -194,3 +194,26 @@ button {
   margin-bottom: 0;
   text-align: center;
 }
+
+
+
+.home-images-l {
+  height: 167px;
+  border-radius: 50px;
+  margin: 0 50px;
+}
+
+.home-images-m {
+    height: 167px;
+    margin: 0 50px;
+
+  }
+
+.home-images-r {
+  height: 167px;
+  margin: 0 50px;
+}
+
+#main-welcome {
+  margin-top: 0;
+}
