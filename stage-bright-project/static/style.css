@@ -178,3 +178,10 @@
 .button-section:hover {
   background: #17c471;
 }
+
+.article {
+  width: 300px;
+  height: 400px;
+  float: left;
+  padding: 13px;
+}
