@@ -3,6 +3,8 @@
 <head>
   <title>My Speeches</title>
   <link href="static/main.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
   <center>
@@ -32,7 +34,9 @@
         </ul>
     </nav>
     <!--  -->
-<h1>My Speeches</h1>
+    <h1>My Speeches</h1>
+
+    <div class = "page-content">
     {% for speech in speeches %}
     <h2> {{speech.title}} </h2>
     <p> {{speech.content}} </p>
@@ -49,5 +53,6 @@
   </form>
 
 </center>
+</div>
 </body>
 </html>

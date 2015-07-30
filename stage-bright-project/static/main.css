@@ -145,3 +145,10 @@ button {
   font-size: large;
   color: #CE81AE
 }
+
+.page-content {
+  background-color: #F5F5F5;
+  padding: 42px;
+  margin: 0 300px 100px 300px;
+  border-radius: 25;
+}
