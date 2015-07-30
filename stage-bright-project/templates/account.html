@@ -37,6 +37,12 @@
     <h1>My Speeches</h1>
 
     <div class = "page-content">
+      <h2>Create a New Speech</h2>
+      <form class = "page-message" method="POST" action="">
+        <p>Title <input type="text" name="title" /></p>
+        <p>Content <textarea rows="4" cols="50" name="content"></textarea></p>
+        <input type="submit" />
+      </form>
     {% for speech in speeches %}
     <h2> {{speech.title}} </h2>
     <p> {{speech.content}} </p>
@@ -45,12 +51,7 @@
     <p><a href="/loggedinteleprompter?key={{speech.key.urlsafe()}}">Use the teleprompter for this post!</a></p>
     {% endfor %}
 
-  <h2>Create a New Speech</h2>
-  <form class = "page-message" method="POST" action="">
-    <p>Title <input type="text" name="title" /></p>
-    <p>Content <textarea rows="4" cols="50" name="content"></textarea></p>
-    <input type="submit" />
-  </form>
+
 
 </center>
 </div>
