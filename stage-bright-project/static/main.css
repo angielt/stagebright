@@ -167,3 +167,19 @@ button {
   right: 90%;
   -webkit-transform: scaleX(-1);
 }
+.bottom-image-right-tele {
+  height: 91px;
+  position: fixed;
+  bottom: 5px;
+  left: 93.5%;
+  border-radius: 23px;
+}
+
+.bottom-image-left-tele {
+  height: 91px;
+  position: fixed;
+  bottom: 5px;
+  right: 93.5%;
+  -webkit-transform: scaleX(-1);
+  border-radius: 23px;
+}
