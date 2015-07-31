@@ -167,6 +167,22 @@ button {
   right: 90%;
   -webkit-transform: scaleX(-1);
 }
+
+.bottom-image-right-myspeeches {
+  height: 219px;
+  position: fixed;
+  bottom: 0;
+  left: 82%;
+}
+
+.bottom-image-left-myspeeches {
+  height: 219px;
+  position: fixed;
+  bottom: 0;
+  right: 82%;
+  -webkit-transform: scaleX(-1);
+}
+
 .bottom-image-right-tele {
   height: 91px;
   position: fixed;
